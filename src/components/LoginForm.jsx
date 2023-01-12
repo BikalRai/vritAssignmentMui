@@ -10,7 +10,7 @@ import {
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 
-const LoginForm = ({ setIsLoggedIn }) => {
+const LoginForm = ({ isLoggedIn, setIsLoggedIn }) => {
     const [userDetail, setUserDetail] = useState({
         username: '',
         password: '',

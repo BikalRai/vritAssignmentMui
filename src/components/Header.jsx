@@ -51,6 +51,16 @@ const Header = () => {
                                             About
                                         </Typography>
                                     </Grid>
+                                    <Grid item>
+                                        <Typography
+                                            variant="subtitle1"
+                                            component={Link}
+                                            to="/users"
+                                            color="#fff"
+                                        >
+                                            Users
+                                        </Typography>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                             <Grid item p={0}>

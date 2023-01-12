@@ -4,6 +4,7 @@ import AboutUs from './AboutUs';
 import Homepage from './Homepage';
 import LoginForm from './LoginForm';
 import RegisterFrom from './RegisterFrom';
+import Users from './Users';
 
 const SiteRoutes = ({
     isRegistered,
@@ -11,6 +12,7 @@ const SiteRoutes = ({
     setIsRegistered,
     setIsLoggedIn,
 }) => {
+    console.log(isRegistered, 'isreg');
     return (
         <>
             {/* <Routes>
@@ -18,11 +20,11 @@ const SiteRoutes = ({
                     isLoggedIn ? (
                         <>
                             <Route path="/" element={<Homepage />} />
-                            <Route path="about-us" element={<AboutUs />} />
+                            <Route path="/about-us" element={<AboutUs />} />
                         </>
                     ) : (
                         <Route
-                            path="login"
+                            path="/login"
                             element={
                                 <LoginForm
                                     isLoggedIn={isLoggedIn}
@@ -33,7 +35,7 @@ const SiteRoutes = ({
                     )
                 ) : (
                     <Route
-                        path="register"
+                        path="/register"
                         element={
                             <RegisterFrom
                                 isRegistered={isRegistered}
@@ -46,16 +48,16 @@ const SiteRoutes = ({
             {/* <Routes>
                 <Route path="login" element={<LoginForm />} />
             </Routes> */}
-            {isRegistered ? (
+            {/* {isRegistered ? (
                 isLoggedIn ? (
                     <Routes>
                         <Route path="/" element={<Homepage />} />
-                        <Route path="about-us" element={<AboutUs />} />
+                        <Route path="/about-us" element={<AboutUs />} />
                     </Routes>
                 ) : (
                     <Routes>
                         <Route
-                            path="login"
+                            path="/login"
                             element={
                                 <LoginForm
                                     isLoggedIn={isLoggedIn}
@@ -68,7 +70,7 @@ const SiteRoutes = ({
             ) : (
                 <Routes>
                     <Route
-                        path="register"
+                        path="/register"
                         element={
                             <RegisterFrom
                                 isRegistered={isRegistered}
@@ -77,7 +79,101 @@ const SiteRoutes = ({
                         }
                     />
                 </Routes>
-            )}
+            )} */}
+            {/* <Routes>
+                {isRegistered ? (
+                    <Route
+                        path="/login"
+                        element={
+                            <LoginForm
+                                isLoggedIn={isLoggedIn}
+                                setIsLoggedIn={setIsLoggedIn}
+                            />
+                        }
+                    />
+                ) : isLoggedIn ? (
+                    <>
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/about-us" element={<AboutUs />} />
+                    </>
+                ) : (
+                    <Route
+                        path="/register"
+                        element={
+                            <RegisterFrom
+                                isRegistered={isRegistered}
+                                setIsRegistered={setIsRegistered}
+                            />
+                        }
+                    />
+                )}
+            </Routes> */}
+            {/* {isRegistered ? (
+                <Routes>
+                    <Route
+                        path="/login"
+                        element={
+                            <LoginForm
+                                isLoggedIn={isLoggedIn}
+                                setIsLoggedIn={setIsLoggedIn}
+                            />
+                        }
+                    />
+                </Routes>
+            ) : isLoggedIn ? (
+                <Routes>
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="/about-us" element={<AboutUs />} />
+                </Routes>
+            ) : (
+                <Routes>
+                    <Route
+                        path="/register"
+                        element={
+                            <RegisterFrom
+                                isRegistered={isRegistered}
+                                setIsRegistered={setIsRegistered}
+                            />
+                        }
+                    />
+                </Routes>
+            )} */}
+            {/* <Routes>
+                {!isRegistered && (
+                    <Route
+                        path="/register"
+                        element={
+                            <RegisterFrom
+                                isRegistered={isRegistered}
+                                setIsRegistered={setIsRegistered}
+                            />
+                        }
+                    />
+                )}
+                {isRegistered && (
+                    <Route
+                        path="/login"
+                        element={
+                            <LoginForm
+                                isLoggedIn={isLoggedIn}
+                                setIsLoggedIn={setIsLoggedIn}
+                            />
+                        }
+                    />
+                )}
+
+                {isRegistered && isLoggedIn && (
+                    <>
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/about-us" element={<AboutUs />} />
+                    </>
+                )}
+            </Routes> */}
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/users" element={<Users />} />
+            </Routes>
         </>
     );
 };

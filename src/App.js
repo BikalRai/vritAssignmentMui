@@ -9,6 +9,7 @@ import SiteRoutes from './components/SiteRoutes';
 import RegisterFrom from './components/RegisterFrom';
 import { useState } from 'react';
 import LoginForm from './components/LoginForm';
+import Homepage from './components/Homepage';
 
 function App() {
     const [isRegistered, setIsRegistered] = useState(false);
@@ -23,13 +24,10 @@ function App() {
             <LoginForm setIsLoggedIn={setIsLoggedIn} /> */}
             <Router>
                 <Layout>
-                    <SiteRoutes
-                        setIsRegistered={setIsRegistered}
-                        isRegistered={isRegistered}
-                        isLoggedIn={isLoggedIn}
-                    />
+                    <SiteRoutes />
                 </Layout>
             </Router>
+            {/* <Homepage /> */}
         </div>
     );
 }
