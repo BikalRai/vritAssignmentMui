@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import AboutUs from './AboutUs';
+import CreateUser from './CreateUser';
 import Homepage from './Homepage';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
@@ -51,6 +52,7 @@ const SiteRoutes = ({
                         />
                     }
                 />
+                <Route path="/create-user" element={<CreateUser />} />
             </Routes>
             {/* {isRegistered ? (
                 <Routes>

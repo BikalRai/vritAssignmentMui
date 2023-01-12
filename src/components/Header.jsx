@@ -1,14 +1,28 @@
-import { AppBar, Grid, TextField, Toolbar, Typography } from '@mui/material';
+import {
+    AppBar,
+    Button,
+    Grid,
+    TextField,
+    Toolbar,
+    Typography,
+} from '@mui/material';
 import React from 'react';
 import NoteIcon from '@mui/icons-material/Note';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { Container } from '@mui/system';
 
-const Header = () => {
+const Header = ({ setIsLoggedIn }) => {
+    const navigate = useNavigate();
+
+    const logout = () => {
+        setIsLoggedIn(false);
+        navigate('/login');
+    };
+
     return (
         <>
-            <AppBar position="fixed">
+            <AppBar position="fixed" color="warning">
                 <Toolbar>
                     <Container>
                         <Grid
@@ -63,14 +77,24 @@ const Header = () => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item p={0}>
+                            <Grid item>
                                 <TextField
                                     variant="standard"
-                                    color="warning"
+                                    color="info"
                                     size="small"
                                     placeholder="Search"
                                 />
                                 <SearchIcon />
+                            </Grid>
+                            <Grid item>
+                                <Typography
+                                    variant="subtitle1"
+                                    component={Link}
+                                    color="#fff"
+                                    onClick={logout}
+                                >
+                                    Logout
+                                </Typography>
                             </Grid>
                         </Grid>
                     </Container>

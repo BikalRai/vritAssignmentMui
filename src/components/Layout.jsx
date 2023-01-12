@@ -2,11 +2,13 @@ import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, setIsLoggedIn, isLoggedIn, isRegistered }) => {
     return (
         <>
             {/*header section*/}
-            <Header />
+            {isRegistered && isLoggedIn && (
+                <Header setIsLoggedIn={setIsLoggedIn} />
+            )}
 
             {/*main content section*/}
             {children}

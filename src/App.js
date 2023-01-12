@@ -23,7 +23,7 @@ function App() {
         } else {
             navigate('/register');
         }
-    });
+    }, [isRegistered, isLoggedIn]);
 
     return (
         <div className="App">
@@ -35,7 +35,11 @@ function App() {
             <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> */}
 
             {/* <Router> */}
-            <Layout>
+            <Layout
+                setIsLoggedIn={setIsLoggedIn}
+                isLoggedIn={isLoggedIn}
+                isRegistered={isRegistered}
+            >
                 <SiteRoutes
                     isRegistered={isRegistered}
                     setIsRegistered={setIsRegistered}
