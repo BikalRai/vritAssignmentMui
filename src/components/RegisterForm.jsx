@@ -16,7 +16,7 @@ import React, { useState } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-const RegisterFrom = ({ isRegistered, setIsRegistered }) => {
+const RegisterForm = ({ isRegistered, setIsRegistered }) => {
     const [userInfo, setUserInfo] = useState({
         username: '',
         password: '',
@@ -68,7 +68,7 @@ const RegisterFrom = ({ isRegistered, setIsRegistered }) => {
         }
     };
 
-    console.log(userInfo, 'userinfo');
+    console.log(userInfo, 'userinfo', isRegistered, 'regis');
     return (
         <>
             <Box
@@ -187,4 +187,4 @@ const RegisterFrom = ({ isRegistered, setIsRegistered }) => {
     );
 };
 
-export default RegisterFrom;
+export default RegisterForm;

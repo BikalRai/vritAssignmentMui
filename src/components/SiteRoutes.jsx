@@ -1,9 +1,9 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import AboutUs from './AboutUs';
 import Homepage from './Homepage';
 import LoginForm from './LoginForm';
-import RegisterFrom from './RegisterFrom';
+import RegisterForm from './RegisterForm';
 import Users from './Users';
 
 const SiteRoutes = ({
@@ -12,9 +12,55 @@ const SiteRoutes = ({
     setIsRegistered,
     setIsLoggedIn,
 }) => {
+    const navigate = useNavigate();
     console.log(isRegistered, 'isreg');
+    // useEffect(() => {
+    //     if (isRegistered) {
+    //         navigate('/');
+    //     } else {
+    //         navigate('/register');
+    //     }
+    // });
+
     return (
         <>
+            {/* {isRegistered
+                ? navigate('/login')
+                : isLoggedIn
+                ? navigate('/')
+                : navigate('/register')} */}
+            <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/users" element={<Users />} />
+                <Route
+                    path="/login"
+                    element={
+                        <LoginForm
+                            isLoggedIn={isLoggedIn}
+                            setIsLoggedIn={setIsLoggedIn}
+                        />
+                    }
+                />
+                <Route
+                    path="/register"
+                    element={
+                        <RegisterForm
+                            isRegistered={isRegistered}
+                            setIsRegistered={setIsRegistered}
+                        />
+                    }
+                />
+            </Routes>
+            {/* {isRegistered ? (
+                <Routes>
+                    <Route path="/login" element={<LoginForm />} />
+                </Routes>
+            ) : (
+                <Routes>
+                    <Route path="/register" element={<RegisterFrom />} />
+                </Routes>
+            )} */}
             {/* <Routes>
                 {isRegistered ? (
                     isLoggedIn ? (
@@ -53,6 +99,7 @@ const SiteRoutes = ({
                     <Routes>
                         <Route path="/" element={<Homepage />} />
                         <Route path="/about-us" element={<AboutUs />} />
+                        <Route path="/users" element={<Users />} />
                     </Routes>
                 ) : (
                     <Routes>
@@ -169,11 +216,6 @@ const SiteRoutes = ({
                     </>
                 )}
             </Routes> */}
-            <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/about-us" element={<AboutUs />} />
-                <Route path="/users" element={<Users />} />
-            </Routes>
         </>
     );
 };

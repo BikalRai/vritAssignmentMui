@@ -1,32 +1,49 @@
 import { CssBaseline } from '@mui/material';
 import './App.css';
 // import Header from './components/Header';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
 // import Homepage from './components/Homepage';
 // import AboutUs from './components/AboutUs';
 import Layout from './components/Layout';
 import SiteRoutes from './components/SiteRoutes';
-import RegisterFrom from './components/RegisterFrom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoginForm from './components/LoginForm';
-import Homepage from './components/Homepage';
+import RegisterForm from './components/RegisterForm';
 
 function App() {
     const [isRegistered, setIsRegistered] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isRegistered && isLoggedIn) {
+            navigate('/');
+        } else if (isRegistered) {
+            navigate('/login');
+        } else {
+            navigate('/register');
+        }
+    });
+
     return (
         <div className="App">
             <CssBaseline />
-            {/* <RegisterFrom
+            {/* <RegisterForm
                 isRegistered={isRegistered}
                 setIsRegistered={setIsRegistered}
             />
-            <LoginForm setIsLoggedIn={setIsLoggedIn} /> */}
-            <Router>
-                <Layout>
-                    <SiteRoutes />
-                </Layout>
-            </Router>
+            <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> */}
+
+            {/* <Router> */}
+            <Layout>
+                <SiteRoutes
+                    isRegistered={isRegistered}
+                    setIsRegistered={setIsRegistered}
+                    isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                />
+            </Layout>
+            {/* </Router> */}
             {/* <Homepage /> */}
         </div>
     );
