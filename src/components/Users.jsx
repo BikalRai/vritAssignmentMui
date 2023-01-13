@@ -17,6 +17,7 @@ import { Container } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SkeleLoad from './SkeleLoad';
 
 const Users = () => {
     const navigate = useNavigate();
@@ -71,10 +72,10 @@ const Users = () => {
     };
 
     useEffect(() => {
-        setTimeout(() => {
-            getUserData();
-        }, 3000);
-        // getUserData();
+        // setTimeout(() => {
+        //     getUserData();
+        // }, 3000);
+        getUserData();
     }, []);
     return (
         <>
@@ -104,13 +105,7 @@ const Users = () => {
                             <TableBody>
                                 <TableRow>
                                     <TableCell>
-                                        <Skeleton
-                                            variant="rectangular"
-                                            // sx={{ bgcolor: 'grey.900' }}
-                                            width={1000}
-                                            height={1200}
-                                            animation="wave"
-                                        />
+                                        <SkeleLoad />
                                     </TableCell>
                                 </TableRow>
                             </TableBody>
