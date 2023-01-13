@@ -18,6 +18,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SkeleLoad from './SkeleLoad';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 const Users = () => {
     const navigate = useNavigate();
@@ -71,6 +73,11 @@ const Users = () => {
         navigate('/create-user');
     };
 
+    // function to edit data
+    const handleEdit = (id) => {};
+
+    const handleDelete = () => {};
+
     useEffect(() => {
         // setTimeout(() => {
         //     getUserData();
@@ -99,6 +106,7 @@ const Users = () => {
                                 <TableCell>S.N</TableCell>
                                 <TableCell>First Name</TableCell>
                                 <TableCell>Last Name</TableCell>
+                                <TableCell>Actions</TableCell>
                             </TableRow>
                         </TableHead>
                         {loadingData ? (
@@ -139,6 +147,27 @@ const Users = () => {
                                             </TableCell>
                                             <TableCell align="right">
                                                 {user.lastname}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Grid container>
+                                                    <Grid item>
+                                                        {' '}
+                                                        <Button
+                                                            onClick={handleEdit}
+                                                        >
+                                                            <ModeEditIcon />
+                                                        </Button>
+                                                    </Grid>
+                                                    <Grid item>
+                                                        <Button
+                                                            onClick={
+                                                                handleDelete
+                                                            }
+                                                        >
+                                                            <RemoveCircleIcon />
+                                                        </Button>
+                                                    </Grid>
+                                                </Grid>
                                             </TableCell>
                                         </TableRow>
                                     ))}
