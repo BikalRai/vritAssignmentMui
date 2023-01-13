@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import AboutUs from './AboutUs';
 import CreateUser from './CreateUser';
@@ -23,6 +23,8 @@ const SiteRoutes = ({
     //     }
     // });
 
+    const [editData, setEditData] = useState({});
+
     return (
         <>
             {/* {isRegistered
@@ -33,7 +35,10 @@ const SiteRoutes = ({
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/about-us" element={<AboutUs />} />
-                <Route path="/users" element={<Users />} />
+                <Route
+                    path="/users"
+                    element={<Users setEditData={setEditData} />}
+                />
                 <Route
                     path="/login"
                     element={
@@ -52,7 +57,10 @@ const SiteRoutes = ({
                         />
                     }
                 />
-                <Route path="/create-user" element={<CreateUser />} />
+                <Route
+                    path="/create-user"
+                    element={<CreateUser editData={editData} />}
+                />
             </Routes>
             {/* {isRegistered ? (
                 <Routes>

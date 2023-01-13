@@ -21,7 +21,8 @@ import SkeleLoad from './SkeleLoad';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
-const Users = () => {
+const Users = ({ setEditData }) => {
+    console.log(setEditData, 'setedit');
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const [loadingData, setLoadingData] = useState(false);
@@ -74,9 +75,12 @@ const Users = () => {
     };
 
     // function to edit data
-    const handleEdit = (id) => {};
+    const handleEdit = (id) => {
+        setEditData({ edit: true });
+        navigate('/create-user');
+    };
 
-    const handleDelete = () => {};
+    const handleDelete = (id) => {};
 
     useEffect(() => {
         // setTimeout(() => {
@@ -153,15 +157,17 @@ const Users = () => {
                                                     <Grid item>
                                                         {' '}
                                                         <Button
-                                                            onClick={handleEdit}
+                                                            onClick={() =>
+                                                                handleEdit()
+                                                            }
                                                         >
                                                             <ModeEditIcon />
                                                         </Button>
                                                     </Grid>
                                                     <Grid item>
                                                         <Button
-                                                            onClick={
-                                                                handleDelete
+                                                            onClick={() =>
+                                                                handleDelete()
                                                             }
                                                         >
                                                             <RemoveCircleIcon />

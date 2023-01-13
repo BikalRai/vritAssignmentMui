@@ -5,10 +5,11 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CreateUser = () => {
+const CreateUser = ({ editData: { edit } }) => {
     const [firstname, setFirstName] = useState('');
     const [lastname, setlastName] = useState('');
     const navigate = useNavigate();
+    console.log(edit, 'edit');
 
     // function to post user data
     const postData = () => {
@@ -84,7 +85,7 @@ const CreateUser = () => {
                             sx={{ padding: '0.5rem 3rem' }}
                             onClick={() => handleSubmit()}
                         >
-                            Add
+                            {edit ? 'Update' : 'add'}
                         </Button>
                     </Grid>
                 </Grid>
